@@ -5,7 +5,7 @@ const addDeliveryData = async (req, res) => {
         const db = await connectDB();
         const collection = db.collection('delivery_details')
         const license_no = req.params.id;
-        console.log(license_no)
+
         const {
             deliveryTime,
             deliveryRadius,
@@ -13,11 +13,6 @@ const addDeliveryData = async (req, res) => {
             orderValueGreaterOrEqual500,
             orderValueLess500
         } = req.body;
-        console.log(deliveryRadius);
-        console.log(deliveryTime);
-        console.log(freeDeliveryRadius);
-        console.log(orderValueGreaterOrEqual500);
-        console.log(orderValueLess500);
         if (
             deliveryTime == null ||
             deliveryRadius == null ||
@@ -44,7 +39,7 @@ const addDeliveryData = async (req, res) => {
             },
             { upsert: true } 
         );
-
+        
         res.status(200).json({
             success: true,
             message: 'Package settings updated successfully',

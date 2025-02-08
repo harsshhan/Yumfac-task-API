@@ -1,9 +1,9 @@
 const express = require('express');
 
-const {upload,addProductDetail} = require('../controllers/productController')
+const {upload,addProductDetail, getProductDetails} = require('../controllers/productController')
 const router = express.Router();
 
-router.get('/')
+router.get('/:id',getProductDetails)
 router.post('/:id',upload.single('productImage'),addProductDetail)
 
 module.exports = router;
